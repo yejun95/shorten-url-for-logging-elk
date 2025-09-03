@@ -85,5 +85,14 @@ docker network connect elastic-network logstash
 ```
 <br>
 
+## kibana 실행 도커 커맨드
+`docker run -d --name kibana --network elastic-network -p 5601:5601 -e "ELASTICSEARCH_HOSTS=http://elasticsearch:9200" kibana:8.10.1`
+
+- 맥북 애플 실리콘 (M1, M2 등) 실행시 --platform linux/amd64 파라미터도 줘야함
+<br>
+<hr>
+<br>
+
 ## 서비스 아키텍처
-<img width="533" height="258" alt="image" src="https://github.com/user-attachments/assets/8d3fef36-62f6-435c-b945-7c63b2bb7c4c" />
+<img width="829" height="405" alt="image" src="https://github.com/user-attachments/assets/906e3b71-5a5a-4baa-9001-9a0673e0fe7e" />
+
