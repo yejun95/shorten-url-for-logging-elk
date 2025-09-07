@@ -1,9 +1,13 @@
 <configuration>
     <property name="LOG_FILE" value="application.log"/>
 
-    <!-- Logstash로 전송할 Appender -->
-    <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-        <destination>localhost:5044</destination>
+    <!-- JSON 형태로 로그를 파일에 저장 (Logstash가 파싱하기 쉬움) -->
+    <appender name="LOGSTASH" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>application-json.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>application-json.%d{yyyy-MM-dd_HH-mm}.log.gz</fileNamePattern>
+            <maxHistory>5</maxHistory>
+        </rollingPolicy>
         <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
     </appender>
 
